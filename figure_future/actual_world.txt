@@ -1,0 +1,97 @@
+Duke
+North Dakota St
+VCU
+UCF
+Mississippi St
+Liberty
+Virginia Tech
+Saint Louis
+Maryland
+Belmont
+LSU
+Yale
+Louisville
+Minnesota
+Michigan State
+Bradley
+Gonzaga
+F. Dickinson
+Syracuse
+Baylor
+Marquette
+Murray State
+Florida St
+Vermont
+Buffalo
+Arizona State
+Texas Tech
+N Kentucky
+Nevada
+Florida
+Michigan
+Montana
+Virginia
+Gardner-Webb
+Ole Miss
+Oklahoma
+Wisconsin
+Oregon
+Kansas State
+UC Irvine
+Villanova
+Saint Mary's
+Purdue
+Old Dominion
+Cincinnati
+Iowa
+Tennessee
+Colgate
+North Carolina
+Iona
+Utah State
+Washington
+Auburn
+New Mexico St
+Kansas
+Northeastern
+Iowa State
+Ohio State
+Houston
+Georgia State
+Wofford
+Seton Hall
+Kentucky
+Abil Christian
+
+Duke
+UCF
+Liberty
+Virginia Tech
+Maryland
+LSU
+Minnesota
+Michigan State
+Gonzaga
+Baylor
+Murray State
+Florida St
+Buffalo
+Texas Tech
+Florida
+Michigan
+Virginia
+Oklahoma
+Oregon
+UC Irvine
+Villanova
+Purdue
+Iowa
+Tennessee
+North Carolina
+Washington
+Auburn
+Kansas
+Ohio State
+Houston
+Wofford
+Kentucky
