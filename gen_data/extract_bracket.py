@@ -1,5 +1,8 @@
 #!/usr/bin/python
 # pylint: disable=W0223
+"""
+Extract bracket information
+"""
 from html.parser import HTMLParser
 import os
 import sys
@@ -17,6 +20,9 @@ sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 
 
 class GetBracket(HTMLParser):
+    """
+    Parse the individual brackets and extract pick information
+    """
     def __init__(self):
         HTMLParser.__init__(self)
         self.name = ''
@@ -46,6 +52,9 @@ class GetBracket(HTMLParser):
 
 
 def complain(winner, runnerup, history):
+    """
+    Print error messages for the sanity check routine
+    """
     for histo in history:
         if histo[1] != 4:
             print('Invalid number of one and dones')
@@ -62,7 +71,11 @@ def complain(winner, runnerup, history):
     if len(runnerup) > 1:
         print('Too many runner-up teams')
 
+
 def sanity_check(picks):
+    """
+    Make sure picks are logically valid
+    """
     with open('teams.txt') as ifile:
         allinfo = ifile.read().strip().split('\n')
         sregions = []
@@ -90,6 +103,9 @@ def sanity_check(picks):
 
 
 def extract_bracket(in_data):
+    """
+    Extract picks from an individual bracket
+    """
     req = requests.get(in_data)
     parser = GetBracket()
     parser.feed(req.text)
@@ -102,6 +118,10 @@ def extract_bracket(in_data):
 
 
 def extract_all():
+    """
+    Loop for all groups.  Extract brackets within each group.
+    Save the extracted information in group_picks.json
+    """
     out_info = {}
     gdict = get_group()
     for group in os.listdir('members'):
