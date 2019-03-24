@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # pylint: disable=W0223
 from html.parser import HTMLParser
-import requests
 import os
 import sys
 import codecs
-from get_group import get_group
 import json
+import requests
+from get_group import get_group
 
 
 HEADER = 'http://fantasy.espn.com/tournament-challenge-bracket/'
@@ -45,38 +45,8 @@ class GetBracket(HTMLParser):
             self.name_flag = False
 
 
-class team_info:
-    def __init__(self):
-        with open('teams.txt') as ifile:
-            allinfo = ifile.read().strip().split('\n')
-            self.regions = []
-            for indx in range(0, 63, 16):
-                self.regions.append(allinfo[indx:indx+16])
-
-
-TEAMS = team_info()
-
-
-def sanity_check(picks):
-    winner = ''
-    runnerup = ''
-    for region in TEAMS.regions:
-        histo = [0, 0, 0, 0]
-        for entry in region:
-            if entry not in picks:
-                continue
-            tindx = picks[entry]
-            if tindx < 4:
-                histo[tindx] += 1
-            else:
-                if tindx == 5:
-                    if runnerup:
-                        print('Too many runner-ups')
-                    runnerup = entry
-                if tindx == 6:
-                    if winner:
-                        print('Too many winners')
-                    winner = entry
+def complain(winner, runnerup, history):
+    for histo in history:
         if histo[1] != 4:
             print('Invalid number of one and dones')
         if histo[2] != 2:
@@ -87,6 +57,35 @@ def sanity_check(picks):
         print('No winner')
     if not runnerup:
         print('No runnerup')
+    if len(winner) > 1:
+        print('Too many winning teams')
+    if len(runnerup) > 1:
+        print('Too many runner-up teams')
+
+def sanity_check(picks):
+    with open('teams.txt') as ifile:
+        allinfo = ifile.read().strip().split('\n')
+        sregions = []
+        for indx in range(0, 63, 16):
+            sregions.append(allinfo[indx:indx+16])
+    winner = []
+    runnerup = []
+    history = []
+    for region in sregions:
+        histo = [0, 0, 0, 0]
+        for entry in region:
+            if entry not in picks:
+                continue
+            tindx = picks[entry]
+            if tindx < 4:
+                histo[tindx] += 1
+            else:
+                if tindx == 5:
+                    runnerup.append(entry)
+                if tindx == 6:
+                    winner.append(entry)
+        history.append(histo)
+    complain(winner, runnerup, history)
     return True
 
 
