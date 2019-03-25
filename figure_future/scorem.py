@@ -21,7 +21,7 @@ def scorekeep(plr, results):
     return retv
 
 def readm():
-    jname = '..' +os.sep + 'gen_data' + os.sep + 'group_picks.json'  
+    jname = '..' +os.sep + 'gen_data' + os.sep + 'group_picks.json'
     with open(jname, 'r', encoding='utf8') as json_file:
         jdata = json.load(json_file, encoding='utf-8')
     return jdata
@@ -35,14 +35,20 @@ def scorem(results, jdata):
             player['score'] = result[0]
             player['best_poss'] = result[1]
             bb_group.append(player)
-        sorted_list= sorted(bb_group, reverse=True,
-            key= lambda item: (item['score'], item['best_poss']))
+        sorted_list = sorted(bb_group, reverse=True, key=lambda item:
+                             (item['score'], item['best_poss']))
         retv[entry] = sorted_list
     return retv
 
-if __name__ == "__main__":
+def test_things():
+    """
+    Run scorem and display the results
+    """
     results = scorem(get_results(), readm())
     for group in results:
         print(group)
         for bracket in results[group]:
             print(bracket['name'], bracket['score'], bracket['best_poss'])
+
+if __name__ == "__main__":
+    test_things()

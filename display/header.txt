@@ -20,4 +20,47 @@ h1, tr, div, p, td {
 <br>
 <h1>%s</h1>
 <br>
+<p>
+After two rounds of play, there are 32,768 possible outcomes remaining in
+the tournament. Assuming that each outcome is equally likely, the following
+is a chart of the pool entries with the best chances to win. Any entry not
+appearing on this chart has been mathematically eliminated from winning this
+pool. This frequently happens when an entry is locked out from winning
+by another entry that has more points and has made the same winning picks
+as the trailing entry.
+</p>
+<p>
+The Winning Outcomes column is the number of these 32,768 possible outcomes
+that will result in this entry being in first place at the end of the
+tournament. The Percentage column is the expected value of this entry if there
+is only a payoff for first place and if ties split the payoff.  In other words,
+it's 1 for a win, 1/2 for a tie with one other entry, 1/3 for a tie with two
+other entries, and so on. This is to insure that the sum of all percentage
+values is 1.
+</p>
+<p>
+The remaining fields are the teams that this entry needs to have win
+in the next round in order to still have a chance at winning this pool.
+An asterisk indicates a game whose result will not affect the entry's standing
+in any way.  A square that is white on a black background is a MUST WIN
+game.  If this result does not happen, then that entry is eliminated from
+taking first in the pool.
+</p>
+<p>
+The remaining fields contain a team and a background color that ranges from
+bright green to bright red.  The color indicates how crucial the game is for
+that entry.  For example, assume UCLA is playing USC.
+if an entry has 500 winning possible outcomes if UCLA wins and
+1 winning possible outcome if USC wins, then that field will contain
+UCLA and have a bright red background. If the entry has 251 winning
+possible outcomes if UCLA
+wins and 250 winning possible outcomes if USC wins, then that field
+will contain
+UCLA and have a bright green background.
+All other ratios will range linearally between green and red (orange is more
+critical than yellow, yellow is more critical than yellow-green).  Any game
+in the red to yellow range is pretty important.
+</p>
+<br>
+<br>
 <table border="1">

@@ -16,12 +16,12 @@ def get_results():
     rounds = []
     cround = []
     for team in team_data:
-       if team == '\n':
-           level += 1
-           rounds.append(cround)
-           cround = []
-       else:
-           cround.append(team.strip())
+        if team == '\n':
+            level += 1
+            rounds.append(cround)
+            cround = []
+        else:
+            cround.append(team.strip())
     rounds.append(cround)
     retval = {}
     for entry in rounds[0]:

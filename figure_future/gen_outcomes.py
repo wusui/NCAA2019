@@ -7,11 +7,11 @@ from scorem import scorem
 
 def gen_numvec(numb, length):
     ovec = []
-    for indx in range(0, length):
+    for _ in range(0, length):
         ovec.append(numb%2)
         numb //= 2
     return ovec
-        
+
 
 def assign_wl_vals(teams, picker):
     if len(teams) == 1:
@@ -19,7 +19,7 @@ def assign_wl_vals(teams, picker):
     evens = teams[::2]
     odds = teams[1:][::2]
     retv = []
-    for count in range(0,len(evens)):
+    for count in range(0, len(evens)):
         if picker[count] == 1:
             retv.append(odds[count])
         else:
@@ -31,10 +31,10 @@ def gen_future(numb, size, teamvec):
     result = []
     picker = gen_numvec(numb, size)
     teams = teamvec.copy()
-    while(teams):
-        teams = assign_wl_vals(teams,picker)
+    while teams:
+        teams = assign_wl_vals(teams, picker)
         result.extend(teams)
-        picker = picker[len(teams):] 
+        picker = picker[len(teams):]
     return result
 
 def loc_update(rslts, picks):
@@ -48,17 +48,17 @@ def gen_histo(twoexp):
     if lsize == 2:
         lsize = 3
     retv = []
-    for cnt in range(0, lsize):
-        retv.append([0,0])
+    for _ in range(0, lsize):
+        retv.append([0, 0])
     return retv
 
 
 def gupdate(fields, indx):
     tnumb = indx
-    for gm in range(0, len(fields)):
+    for game in range(0, len(fields)):
         val = tnumb % 2
         tnumb //= 2
-        fields[gm][val] += 1
+        fields[game][val] += 1
     return fields
 
 def gen_outcomes():
@@ -94,7 +94,11 @@ def gen_outcomes():
                 retv[group][name][1] = gupdate(retv[group][name][1], indx)
     return retv
 
-if __name__ == "__main__":
+def save_outcomes():
     all_data = gen_outcomes()
-    with open("result.json","w", encoding='utf-8') as jsonfile:
-        json.dump(all_data,jsonfile,ensure_ascii=False)
+    with open("result.json", "w", encoding='utf-8') as jsonfile:
+        json.dump(all_data, jsonfile, ensure_ascii=False)
+
+
+if __name__ == "__main__":
+    save_outcomes()
