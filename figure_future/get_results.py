@@ -1,4 +1,14 @@
+#!/usr/bin/python
+"""
+Read real_world.txt to get either active teams or
+game results
+"""
+
+
 def get_survivors():
+    """
+    Get list of active teams from real_world.txt
+    """
     with open('real_world.txt', 'r') as rfile:
         team_data = rfile.readlines()
     retv = []
@@ -9,7 +19,11 @@ def get_survivors():
             retv.append(entry.strip())
     return retv
 
+
 def get_results():
+    """
+    Update team win information from real_world.txt
+    """
     with open('real_world.txt', 'r') as rfile:
         team_data = rfile.readlines()
     level = 0
@@ -41,6 +55,7 @@ def get_results():
                     retval[loser]['alive'] = False
                     break
     return retval
+
 
 if __name__ == "__main__":
     print(get_results())

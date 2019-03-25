@@ -42,7 +42,7 @@ values is 1.
 The remaining fields are the teams that this entry needs to have win
 in the next round in order to still have a chance at winning this pool.
 An asterisk indicates a game whose result will not affect the entry's standing
-in any way.  A square that is white on a black background is a MUST WIN
+in any way.  A square that is white text on a black background is a MUST WIN
 game.  If this result does not happen, then that entry is eliminated from
 taking first in the pool.
 </p>

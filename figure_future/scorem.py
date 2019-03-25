@@ -1,3 +1,7 @@
+#!/usr/bin/python
+"""
+Add up scores for players
+"""
 import sys
 import codecs
 import json
@@ -10,6 +14,9 @@ POINTS = [0, 10, 30, 70, 150, 310, 630]
 
 
 def scorekeep(plr, results):
+    """
+    Tabulate the current score and maximum possible score for a player
+    """
     retv = [0, 0]
     for teamn in plr['picks']:
         realp = min(plr['picks'][teamn], results[teamn]['wins'])
@@ -20,13 +27,21 @@ def scorekeep(plr, results):
         retv[1] += POINTS[possp]
     return retv
 
+
 def readm():
-    jname = '..' +os.sep + 'gen_data' + os.sep + 'group_picks.json'
+    """
+    Read the json data extracted by the gen_data commands.
+    """
+    jname = '..' + os.sep + 'gen_data' + os.sep + 'group_picks.json'
     with open(jname, 'r', encoding='utf8') as json_file:
         jdata = json.load(json_file, encoding='utf-8')
     return jdata
 
+
 def scorem(results, jdata):
+    """
+    Score a set of player records
+    """
     retv = {}
     for entry in jdata:
         bb_group = []
@@ -40,6 +55,7 @@ def scorem(results, jdata):
         retv[entry] = sorted_list
     return retv
 
+
 def test_things():
     """
     Run scorem and display the results
@@ -49,6 +65,7 @@ def test_things():
         print(group)
         for bracket in results[group]:
             print(bracket['name'], bracket['score'], bracket['best_poss'])
+
 
 if __name__ == "__main__":
     test_things()

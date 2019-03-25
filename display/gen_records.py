@@ -11,6 +11,7 @@ def gen_records(in_data):
         new_rec['percentage'] = in_data[rec][0] / factor
         new_rec['next_round'] = in_data[rec][1]
         rec_vec.append(new_rec)
-    ret_list= sorted(rec_vec, reverse=True,
-        key= lambda item: (item['winning_outcomes'], item['percentage']))
+    ret_list = sorted(rec_vec, reverse=True,
+                      key=lambda item: (item['winning_outcomes'],
+                                        item['percentage']))
     return ret_list
