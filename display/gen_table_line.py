@@ -1,10 +1,23 @@
+#!/usr/bin/python
+"""
+Generate a line in the html table.
+"""
+
+
 def wrapper(field, wrap_txt):
+    """
+    Wrap a field in html.
+    """
     answer = "<%s>" % wrap_txt
     answer += field
     answer += "</%s>" % wrap_txt
     return answer
 
+
 def gen_head_sect(headings):
+    """
+    Generate the html for a section of the table header
+    """
     parts = []
     for txtfld in headings:
         sects = txtfld.split(' ')
@@ -20,7 +33,11 @@ def gen_head_sect(headings):
         mstr += part
     return mstr
 
+
 def gen_table_header(abbrev):
+    """
+    Generate the html for the entire table header
+    """
     headings = ['NAME', 'Winning Outcomes', 'Percentage']
     ostrv = gen_head_sect(headings)
     evens = abbrev[::2]
@@ -31,7 +48,11 @@ def gen_table_header(abbrev):
     ostrv += gen_head_sect(matches)
     return wrapper(ostrv, 'tr')
 
+
 def needed_fields(dist_info, abbrev):
+    """
+    Generate the fields for the next round games.
+    """
     style = []
     pickx = []
     evens = abbrev[::2]
@@ -59,7 +80,11 @@ def needed_fields(dist_info, abbrev):
         retv += '</td>'
     return retv
 
+
 def color_me(dist_infp):
+    """
+    Generate the background coloring for a next round game field.
+    """
     total = sum(dist_infp)
     high = max(dist_infp)
     compv = high * 1024
@@ -85,6 +110,9 @@ def color_me(dist_infp):
 
 
 def gen_table_row(record, abbrevs):
+    """
+    Generate a row of the html table.
+    """
     ostr = wrapper(record['name'], 'td')
     ostr += wrapper(str(record['winning_outcomes']), 'td')
     pct = "{:7.5f}".format(record['percentage'])

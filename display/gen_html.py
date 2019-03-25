@@ -1,10 +1,15 @@
+#!/usr/bin/python
+"""
+Html page generator
+"""
 from gen_table_line import gen_table_header
 from gen_table_line import gen_table_row
 
+
 def gen_html(name, rec_list, abbrevs):
-    #print(name)
-    #print(rec_list)
-    #print(abbrevs)
+    """
+    Generate an Html page for a pool.
+    """
     with open('header.txt', 'r') as fdata:
         ostr = fdata.read()
     nhead = ostr % (name, name)

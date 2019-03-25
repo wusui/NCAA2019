@@ -1,4 +1,13 @@
+#!/usr/bin/python
+"""
+Generate a line in the html table.
+"""
+
+
 def gen_records(in_data):
+    """
+    Generate a sorted list of results to be output in an html table.
+    """
     rec_vec = []
     factor = 0
     for rec in in_data:
